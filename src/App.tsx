@@ -1,25 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import {Button, Container, Row, Col} from "react-bootstrap";
 
 function App(): JSX.Element {
+    const [counter,setCounter] = useState<number>(0);
+    const [displayCounter,setDisplayCounter] = useState<boolean>(true);
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-          Learn React
-                </a>
-            </header>
-        </div>
+        <Container>
+            <div className="App">
+                <Row>
+                    <p>Welcome to the app</p>
+
+                    <Col>
+                        <Button onClick={() => {
+                            let theCounter = counter;
+                            setCounter(++theCounter);
+                        }}>Incrementer</Button>
+                    </Col>
+                    <Col>
+                        <Button onClick={() => {
+                            let theCounter = counter;
+                            setCounter(--theCounter);
+                        }}>Decremeneter</Button>
+                    </Col>
+                    <Button onClick={() =>{
+                        setCounter(0);
+                    }}>ZERO!!!</Button>
+                    <Col>
+                        <Button onClick={() => {
+                            setDisplayCounter(!displayCounter);
+                        }}>Delete counter</Button>
+                    </Col>
+                </Row>
+            </div>
+        </Container>
     );
 }
 
